@@ -52,7 +52,7 @@ class ShopService implements ShopServiceInterface // SESSION VERSION
             ];
         }
 
-        $_SESSION[$this->key]['items'] = [$cartItem->getId() => $cartItem];
+        $_SESSION[$this->key]['items'][$cartItem->getId()] = $cartItem;
     }
 
     public function updateItem(CartItem $cartItem) : void
@@ -95,6 +95,7 @@ class ShopService implements ShopServiceInterface // SESSION VERSION
     public function subTotal(): float
     {
         $items = $this->getItems();
+        __dd($items);
         $sub_total = 0;
         foreach ($items as $item)
         {

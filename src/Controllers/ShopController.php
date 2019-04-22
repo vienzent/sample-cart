@@ -81,7 +81,7 @@ class ShopController extends Controller
             $this->shopService->addItem($cartItem);
 
             flash_message_success("Product was successfully added to the cart");
-            return $this->redirect('/shop');
+            return $this->redirect(__url('/shop'));
         }
         catch(ValidatorException $ex)
         {
@@ -109,7 +109,7 @@ class ShopController extends Controller
 
             flash_message_success("Item was successfully updated.");
 
-            return $this->redirect('/cart');
+            return $this->redirect(__url('/cart'));
         }
         catch(CartItemNotFoundException $ex)
         {
@@ -134,7 +134,7 @@ class ShopController extends Controller
 
             flash_message_success("Item was successfully remove from cart.");
 
-            return $this->redirect('/cart');
+            return $this->redirect(__url('/cart'));
         }
         catch(CartItemNotFoundException $ex)
         {
@@ -162,7 +162,7 @@ class ShopController extends Controller
             $this->shopService->checkout($data['shipping']);
 
             flash_message_success("Order successfully.");
-            return $this->redirect('/orders');
+            return $this->redirect(__url('/orders'));
         }
         catch(ValidatorException $ex)
         {
